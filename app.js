@@ -10,7 +10,6 @@ let messageTab;
 let messageDisplay;
 let messageBalise = document.querySelector(".message");
 let indicationBalise = document.querySelector(".indication");
-let cookieClickLeft = 3;
 
 let indicationChange = [
     "Ooooh...",
@@ -23,7 +22,7 @@ if (today == previousCookieOpened) {
     messageDisplay = localStorage.getItem("messageSaved");
     writeMessage();
     lockBtn();
-    writeIndication(3);
+    writeIndication(2);
 }
 
 function getRandomIntInclusive(min, max) {
@@ -44,15 +43,12 @@ fetch("assets/json/messages.json")
     });
 
 function cookieClicked(){
-    if (cookieClickLeft == 0) {
-        localStorage.setItem("cookieDate", today);
-        messageDisplay = messageTab[getRandomIntInclusive(0, messageTab.length - 1)];
-        localStorage.setItem("messageSaved", messageDisplay);
-        writeMessage();
-        lockBtn();
-    }
-    cookieClickLeft--;
-    writeIndication(cookieClickLeft);
+    localStorage.setItem("cookieDate", today);
+    messageDisplay = messageTab[getRandomIntInclusive(0, messageTab.length - 1)];
+    localStorage.setItem("messageSaved", messageDisplay);
+    writeMessage();
+    lockBtn();
+    writeIndication(2);
 }
 
 function lockBtn(){
@@ -64,5 +60,5 @@ function writeMessage(){
 }
 
 function writeIndication(state){
-    indicationBalise.innerText = indicationChange[(indicationChange.length - 1) - state];
+    indicationBalise.innerText = indicationChange[state];
 }
