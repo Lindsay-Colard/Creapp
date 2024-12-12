@@ -3,7 +3,7 @@
 let today = new Date().toLocaleDateString();
 let previousCookieOpened = localStorage.getItem("cookieDate");
 
-let cookieClicker = document.querySelector(".cookie");
+let cookieClicker = document.querySelector(".btn");
 cookieClicker.addEventListener("click", cookieClicked);
 
 let messageTab;
@@ -69,25 +69,43 @@ function animTouch(){
 }
 
 function animBeforeEX1(){
-    let cookieFull = document.querySelector(".cookie--full");
-    cookieFull.classList.add("cookie--full--anim1");
+    let cookie = document.querySelector(".cookie--full");
+    cookie.classList.add("anim__full--1");
 }
 
 function animBeforeEX2(){
-    let cookieFull = document.querySelector(".cookie--full");
-    cookieFull.classList.add("cookie--full--anim2");
+    let cookie = document.querySelector(".cookie--full");
+    cookie.classList.add("anim__full--2");
+
+    // Timer à 700 car animation delay d'anim__full--2 à 0.5s et je rajoute 0.2s
     setTimeout(() => {
-        document.querySelector(".svg__fissure").classList.add("svg__fissure--open");
+        document.querySelector(".cookie__fissure").classList.add("cookie__fissure--show");
     }, 700);
 
-    document.querySelector(".cookie--full").addEventListener("animationend", animBeforeEX3)
+    cookie.addEventListener("animationend", animBeforeEX3)
 }
 
 function animBeforeEX3(){
-    let cookieGlobal = document.querySelector(".cookie--anim");
-    let cookieFull = document.querySelector(".cookie--full");
-    cookieGlobal.classList.add("cookie--anim3");
-    cookieFull.classList.add("cookie--full--anim3");
+    let cookie = document.querySelector(".cookie--full");
+    cookie.classList.add("anim__full--3");
+    
+    cookie.addEventListener("animationend", animEX1)
+}
+
+function animEX1(){
+    let cookie = document.querySelector(".cookie--broken");
+    cookie.classList.add("anim__broken--1");
+
+    let paper = document.querySelector(".prediction");
+    paper.classList.add("anim__paper--1");
+
+    paper.addEventListener("animationend", animPaper)
+}
+
+function animPaper(){
+    let paper = document.querySelector(".prediction");
+    paper.classList.add("anim__paper--2");
+    paper.classList.add("anim__paper--3");
 }
 
 function lockBtn(){

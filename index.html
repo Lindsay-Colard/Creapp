@@ -18,30 +18,50 @@
         <p class="indication text--big" data-text="Tap the fortune cookie for today's quote!">Tap the fortune cookie for today's quote!</p>
         <p class="text--small"></p>
 
-        <!-- placeholder -->
-        <div aria-hidden="true" class="cookie--space"></div>
         <!-- COOKIE -->
-        <button class="cookie">
-            <svg id="cookieFull" class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169.03 144.96">
-                <g class="cookie--anim">
-                    <g class="cookie--full">
-                        <path class="svg__cookie" d="M15.09 35.96c2.58-3.64 10.29-4.17 28.87 5.74 13.13 7 31.22 14.88 44.55 32.24 3.61-12.33 5.72-30.49 16.26-49.67C113.98 7.5 122.57.12 125.85.52c47.86 5.78 68.9 108.61-9.6 137.27-76.58 27.96-147.11-37-101.16-101.83Z"/>
-                        <path d="M88.51 73.93c-.2 1.36-1.09 6.2-5.39 9.92-3.1 2.68-6.42 3.44-7.94 3.69"/>
-                        <path d="M125.85.52c3.97 2.07 36.61 28.79 37.37 67.47.62 31.66-28.51 62.94-69.25 75.44"/>
+        <button class="btn">
+
+            <div class="touch">
+                <div class="touch__circle touch__circle--big"></div>
+                <div class="touch__circle"></div>
+            </div>
+
+            <svg class="svg cookie cookie--full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169.03 144.96">
+                <g class="cookie__group--full">
+                    <path class="cookie__svg" d="M15.09 35.96c2.58-3.64 10.29-4.17 28.87 5.74 13.13 7 31.22 14.88 44.55 32.24 3.61-12.33 5.72-30.49 16.26-49.67C113.98 7.5 122.57.12 125.85.52c47.86 5.78 68.9 108.61-9.6 137.27-76.58 27.96-147.11-37-101.16-101.83Z"/>
+                    <path d="M88.51 73.93c-.2 1.36-1.09 6.2-5.39 9.92-3.1 2.68-6.42 3.44-7.94 3.69"/>
+                    <path d="M125.85.52c3.97 2.07 36.61 28.79 37.37 67.47.62 31.66-28.51 62.94-69.25 75.44"/>
                         
-                        <path class="svg__fissure" d="m75.19 87.54 25.47 17.94c-8.31 5.86-16.63 11.72-24.94 17.57 4.72 6.05 12.14 14.33 16.87 20.37"/>
-                      </g>
+                    <path class="cookie__fissure" d="m75.19 87.54 25.47 17.94c-8.31 5.86-16.63 11.72-24.94 17.57 4.72 6.05 12.14 14.33 16.87 20.37"/>
                 </g>
             </svg>
 
-            <div class="anim anim--touch">
-                <div class="touch__circle touch__circle--small"></div>
-                <div class="touch__circle touch__circle"></div>
-            </div>
-        </button>
-        <p class="message"></p>
+            <!-- <svg class="svg paper" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.91 49.52">
+                <path d="M177.88 36.04c-1.9.87-4.68 2.09-8.06 3.41-13.18 5.16-31.24 10.2-83.53 9.5-45.48-.61-63.4-4.85-77.3-9.5-3.55-1.19-6.47-2.28-8.49-3.06C.59 24.52.68 12.64.76.77c1.72.78 4.29 1.91 7.43 3.14 13.96 5.48 30.64 9.67 77.53 9.41 50.82-.28 70.96-5.41 83.53-9.41 3.84-1.22 7-2.35 9.15-3.14-.17 11.76-.35 23.51-.52 35.27Z"/>
+            </svg> -->
 
-        <p class="text--ultrasmall"></p>
+            <svg class="svg cookie cookie--broken" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245.6 136.5">
+                <g class="cookie__group--broken cookie__group--right">
+                  <path class="cookie__svg" d="M138.19 81.83c10.51-6.09 39.13-43.4 53.34-59.7C204.11 7.71 209.26-.35 212.43.57c46.27 13.53 49.9 116.88-31.93 133.86-8.04 1.67-15.85 1.75-19.2.84-1.07-.29-1.83-2.35-1.83-2.35l-16.7-27.31 25.89-6.99-30.47-16.79Z"/>
+                  <path d="M212.43.57c3.58 2.69 31.41 34.39 25.83 72.67-4.57 31.34-34.72 56.36-76.96 62.02"/>
+                  
+                </g>
+                <g class="cookie__group--broken cookie__group--left">
+                    <path class="cookie__svg" d="M96.82 66.73S80.93 51.36 42.8 34.99c-20.41-8.76-22.54-8.43-29.95-5.39s-17.51 36.44-9.3 59.06c15.28 42.08 87.93 50.12 90.59 46.61.56-.73-11.24-21.06-11.24-21.06L98.22 98.9 68.86 81.04S92.59 69.83 96.8 66.73Z"/>
+                </g>
+              </svg>
+        </button>
+
+        <div class="prediction">
+            <div class="prediction__container">
+                <p class="message prediction__msg">Ceci est un très très très très très très très long message</p>
+
+            <img aria-hidden="true" class="prediction__img" src="/Creapp/assets/Paper.png" alt="">
+            </div>
+        </div>
+        
+
+        <p class="text--ultrasmall" data-text="countdown">countdown</p>
     </main>
 </body>
 </html>

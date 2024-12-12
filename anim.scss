@@ -1,0 +1,166 @@
+// Balancement en attendant d'être cliqué
+@keyframes waiting {
+    0%{
+        transform: rotate(0) translate(0, 0);
+    }
+    40%{
+        transform: rotate(0) translate(0, 0);
+    }
+    50%{
+        transform: rotate(-3deg) translate(3px, 0);
+    }
+    55%{
+        transform: rotate(3deg) translate(-2px, 0);
+    }
+}
+
+// Appui sur le cookie
+@keyframes animTouch{
+    0%{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    66%{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100%{
+        display: none;
+        opacity: 0;
+        border-width: 0px;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+// Animations AVANT l'explosion
+@keyframes animBeforeEX1{
+    0%{
+        transform: rotate(0deg) translate(0, 0);
+    }
+    33%{
+        transform: rotate(-5deg) translate(3px, 0);
+    }
+    50%{
+        transform: rotate(5deg) translate(-2px, 0);
+    }
+    100%{
+        transform: rotate(0deg) translate(0, 0);
+    }
+}
+
+@keyframes animBeforeEX2{
+    0%{
+        transform: rotate(0deg) translate(0, 0);
+    }
+    33%{
+        transform: rotate(-8deg) translate(5px, 0);
+    }
+    50%{
+        transform: rotate(8deg) translate(-4px, 0);
+    }
+    100%{
+        transform: rotate(0deg) translate(0, 0);
+    }
+}
+
+@keyframes animBeforeEX3{
+    0%{
+        transform: rotate(0deg);
+    }
+    15%{
+        transform: rotate(3deg);
+    }
+    30%{
+        transform: rotate(-1deg);
+    }
+    45%{
+        transform: rotate(5deg);
+    }
+    60%{
+        transform: rotate(-6deg);
+    }
+    70%{
+        transform: rotate(8deg);
+    }
+    80%{
+        transform: rotate(-7deg);
+    }
+    90%{
+        transform: rotate(8deg);
+    }
+    100%{
+        transform: rotate(-7deg);
+    }
+}
+
+@keyframes animBeforeEXBIS {
+    0%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    95%{
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(1.2);
+        display: none;
+    }
+}
+
+// Animations Explosion
+@keyframes animEx1Zoom {
+    from{
+        transform: translate(-50%, -75%) scale(0.8);
+    }
+    to{
+        transform: translate(-50%, -75%) scale(1);
+    }
+}
+
+@keyframes animEx1Left {
+    from{
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    to{
+        transform: translate(-32px, -24px) rotate(-10deg);
+    }
+}
+
+@keyframes animEx1Right {
+    from{
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+    to{
+        transform: translate(32px, -24px) rotate(10deg);
+    }
+}
+
+// Animation papier
+@keyframes animPaper1 {
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(0.9);
+    }
+}
+
+@keyframes animPaper2 {
+    from{
+        transform: scale(0.9);
+    }
+    to{
+        z-index: 100;
+        transform: scale(1);
+    }
+}
+
+@keyframes animText {
+    from{
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
