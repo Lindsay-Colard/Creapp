@@ -10,6 +10,7 @@ let messageTab;
 let messageDisplay;
 let messageBalise = document.querySelector(".message");
 let indicationBalise = document.querySelector(".indication");
+let indicationMessage = "Cliquez sur le biscuit";
 
 let indicationChange = [
     "Ooooh...",
@@ -60,5 +61,7 @@ function writeMessage(){
 }
 
 function writeIndication(state){
-    indicationBalise.innerText = indicationChange[state];
+    indicationMessage = indicationChange[state];
+    indicationBalise.innerText = indicationMessage;
+    indicationBalise.setAttribute("data-text", indicationMessage);
 }
