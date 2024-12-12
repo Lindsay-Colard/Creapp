@@ -22,7 +22,7 @@ if (today == previousCookieOpened) {
     localStorage.setItem("cookieDate", today);
     messageDisplay = localStorage.getItem("messageSaved");
     writeMessage();
-    lockBtn();
+    // lockBtn();
     writeIndication(2);
 }
 
@@ -48,8 +48,46 @@ function cookieClicked(){
     messageDisplay = messageTab[getRandomIntInclusive(0, messageTab.length - 1)];
     localStorage.setItem("messageSaved", messageDisplay);
     writeMessage();
-    lockBtn();
+    // lockBtn();
     writeIndication(2);
+
+    // ANIMATION TRIGGERS
+    animTouch();
+    animBeforeEX1();
+
+    document.querySelector(".cookie--full").addEventListener("animationend", animBeforeEX2);
+
+    
+};
+
+// ANIMATIONS
+function animTouch(){
+    let animCircles = document.querySelectorAll(".touch__circle");
+    animCircles.forEach(circle => {
+        circle.classList.add("touch__circle--anim");
+    });
+}
+
+function animBeforeEX1(){
+    let cookieFull = document.querySelector(".cookie--full");
+    cookieFull.classList.add("cookie--full--anim1");
+}
+
+function animBeforeEX2(){
+    let cookieFull = document.querySelector(".cookie--full");
+    cookieFull.classList.add("cookie--full--anim2");
+    setTimeout(() => {
+        document.querySelector(".svg__fissure").classList.add("svg__fissure--open");
+    }, 700);
+
+    document.querySelector(".cookie--full").addEventListener("animationend", animBeforeEX3)
+}
+
+function animBeforeEX3(){
+    let cookieGlobal = document.querySelector(".cookie--anim");
+    let cookieFull = document.querySelector(".cookie--full");
+    cookieGlobal.classList.add("cookie--anim3");
+    cookieFull.classList.add("cookie--full--anim3");
 }
 
 function lockBtn(){

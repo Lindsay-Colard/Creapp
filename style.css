@@ -3,6 +3,7 @@
   --color-yellow: #FFCC5F;
   --color-red: #FF6B6B;
   --color-black: #1B1B3A;
+  --border-cookie: #f08d14;
   --text-supersmall: 10px;
   --text-small: 14px;
   --text: 18px;
@@ -17,10 +18,13 @@
 body {
   padding: 12px;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   overflow: hidden;
   background-color: var(--color-white);
   color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 18px;
   font-family: "M PLUS Rounded 1c", serif;
   font-weight: 900;
@@ -71,12 +75,23 @@ h1::after, p::after {
   display: none;
 }
 
-.cookie {
-  cursor: pointer;
-}
-
 .blocked {
   pointer-events: none;
+}
+
+.message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 32px;
+  font-family: "Fraunces", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+  background-color: rgba(255, 255, 255, 0.486);
 }
 
 .background {
@@ -99,5 +114,190 @@ h1::after, p::after {
   }
   to {
     background-position: -10000px -10000px;
+  }
+}
+@media (orientation: landscape) {
+  main {
+    aspect-ratio: 9/16;
+    height: 100%;
+    width: auto;
+    overflow: hidden;
+  }
+}
+.cookie {
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 8px);
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.cookie--space {
+  height: 266px;
+}
+.cookie--anim3 {
+  transform-origin: center;
+  animation: animeBeforeEXBIS 1s ease-in forwards;
+}
+.cookie--full {
+  transform-origin: bottom center;
+  animation: full 3s ease-out infinite;
+}
+.cookie--full--anim1 {
+  animation: animBeforeEX1 0.5s ease-out;
+}
+.cookie--full--anim2 {
+  animation: animBeforeEX2 0.5s ease-out;
+  animation-delay: 0.5s;
+}
+.cookie--full--anim3 {
+  animation: animBeforeEX3 1s ease-in;
+}
+
+.svg {
+  width: 266px;
+  height: auto;
+  fill: none;
+  stroke: var(--border-cookie);
+  stroke-width: 3px;
+  overflow: visible;
+}
+.svg__cookie {
+  fill: var(--color-yellow);
+  filter: drop-shadow(8px 8px 0 var(--color-white));
+}
+.svg__fissure {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+.svg__fissure--open {
+  stroke-dashoffset: 0;
+}
+
+@keyframes full {
+  0% {
+    transform: rotate(0) translate(0, 0);
+  }
+  40% {
+    transform: rotate(0) translate(0, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate(3px, 0);
+  }
+  55% {
+    transform: rotate(3deg) translate(-2px, 0);
+  }
+}
+.anim {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.touch__circle {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 8px);
+  width: 200px;
+  height: 200px;
+  border: solid var(--color-white);
+  border-radius: 100%;
+  border-width: 24px;
+  transform-origin: center;
+}
+.touch__circle--small {
+  width: 250px;
+  height: 250px;
+  border-width: 16px;
+  animation-delay: 0.3s;
+}
+.touch__circle--anim {
+  animation: animTouch 0.8s linear forwards;
+}
+
+@keyframes animTouch {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  66% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    border-width: 0px;
+    opacity: 0;
+    display: none;
+  }
+}
+@keyframes animBeforeEX1 {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  33% {
+    transform: rotate(-5deg) translate(3px, 0);
+  }
+  50% {
+    transform: rotate(5deg) translate(-2px, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+}
+@keyframes animBeforeEX2 {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  33% {
+    transform: rotate(-8deg) translate(5px, 0);
+  }
+  50% {
+    transform: rotate(8deg) translate(-4px, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+}
+@keyframes animBeforeEX3 {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(3deg);
+  }
+  30% {
+    transform: rotate(-1deg);
+  }
+  45% {
+    transform: rotate(5deg);
+  }
+  60% {
+    transform: rotate(-6deg);
+  }
+  70% {
+    transform: rotate(8deg);
+  }
+  80% {
+    transform: rotate(-7deg);
+  }
+  90% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(-7deg);
+  }
+}
+@keyframes animeBeforeEXBIS {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.8);
   }
 }/*# sourceMappingURL=style.css.map */

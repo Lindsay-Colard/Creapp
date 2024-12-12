@@ -15,9 +15,30 @@
     <div class="background"></div>
     <main>
         <h1 class="projectName">Fortu-Nom-Nom</h1>
-        <p class="indication text--big" data-text="Cliquez sur le biscuit">Cliquez sur le biscuit</p>
+        <p class="indication text--big" data-text="Tap the fortune cookie for today's quote!">Tap the fortune cookie for today's quote!</p>
         <p class="text--small"></p>
-        <button class="cookie">Biscuit</button>
+
+        <!-- placeholder -->
+        <div aria-hidden="true" class="cookie--space"></div>
+        <!-- COOKIE -->
+        <button class="cookie">
+            <svg id="cookieFull" class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169.03 144.96">
+                <g class="cookie--anim">
+                    <g class="cookie--full">
+                        <path class="svg__cookie" d="M15.09 35.96c2.58-3.64 10.29-4.17 28.87 5.74 13.13 7 31.22 14.88 44.55 32.24 3.61-12.33 5.72-30.49 16.26-49.67C113.98 7.5 122.57.12 125.85.52c47.86 5.78 68.9 108.61-9.6 137.27-76.58 27.96-147.11-37-101.16-101.83Z"/>
+                        <path d="M88.51 73.93c-.2 1.36-1.09 6.2-5.39 9.92-3.1 2.68-6.42 3.44-7.94 3.69"/>
+                        <path d="M125.85.52c3.97 2.07 36.61 28.79 37.37 67.47.62 31.66-28.51 62.94-69.25 75.44"/>
+                        
+                        <path class="svg__fissure" d="m75.19 87.54 25.47 17.94c-8.31 5.86-16.63 11.72-24.94 17.57 4.72 6.05 12.14 14.33 16.87 20.37"/>
+                      </g>
+                </g>
+            </svg>
+
+            <div class="anim anim--touch">
+                <div class="touch__circle touch__circle--small"></div>
+                <div class="touch__circle touch__circle"></div>
+            </div>
+        </button>
         <p class="message"></p>
 
         <p class="text--ultrasmall"></p>
