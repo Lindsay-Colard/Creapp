@@ -1,1 +1,11 @@
-/*# sourceMappingURL=style.css.map */
+.projectName {
+  display: none;
+}
+
+.cookie {
+  cursor: pointer;
+}
+
+.blocked {
+  pointer-events: none;
+}/*# sourceMappingURL=style.css.map */
