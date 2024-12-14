@@ -2,9 +2,13 @@
 
 let today = new Date().toLocaleDateString();
 let previousCookieOpened = localStorage.getItem("cookieDate");
+let previosMessage = localStorage.getItem("messageSaved");
 
 let cookieClicker = document.querySelector(".btn");
 cookieClicker.addEventListener("click", cookieClicked);
+
+let countdownBalise = document.querySelector(".countdown-timer");
+let countdownText = "wait ... hours ... min ... sec before your next cookie";
 
 let messageTab;
 let messageDisplay;
@@ -20,10 +24,11 @@ let indicationChange = [
 
 if (today == previousCookieOpened) {
     localStorage.setItem("cookieDate", today);
-    messageDisplay = localStorage.getItem("messageSaved");
+    messageDisplay = previosMessage;
     writeMessage();
     // lockBtn();
     writeIndication(2);
+    countdownTimer();
 }
 
 function getRandomIntInclusive(min, max) {
@@ -45,11 +50,16 @@ fetch("assets/json/messages.json")
 
 function cookieClicked(){
     localStorage.setItem("cookieDate", today);
-    messageDisplay = messageTab[getRandomIntInclusive(0, messageTab.length - 1)];
+    let newMessage;
+    do {
+        newMessage = messageTab[getRandomIntInclusive(0, messageTab.length - 1)]
+    } while (newMessage == previosMessage);
+    messageDisplay = newMessage;
     localStorage.setItem("messageSaved", messageDisplay);
     writeMessage();
     // lockBtn();
     writeIndication(2);
+    countdownTimer();
 
     // ANIMATION TRIGGERS
     animTouch();
@@ -121,3 +131,34 @@ function writeIndication(state){
     indicationBalise.innerText = indicationMessage;
     indicationBalise.setAttribute("data-text", indicationMessage);
 }
+
+
+function countdownTimer() {
+    const second = 1000,
+          minute = second * 60,
+          hour = minute * 60,
+          day = hour * 24;
+  
+    let todayDate = new Date(),
+        dd = todayDate.getDate(),
+        mm = String(todayDate.getMonth() + 1).padStart(2, "0"),
+        yyyy = todayDate.getFullYear(),
+        tomorrow = String(dd + 1).padStart(2, "0"),
+        dayMonth = mm + "/" + tomorrow + "/",
+        nextDay = dayMonth + yyyy;
+    
+    todayDate = mm + "/" + dd + "/" + yyyy;
+    
+    const countDown = new Date(nextDay).getTime(),
+        x = setInterval(function() {    
+  
+          const now = new Date().getTime(),
+                distance = countDown - now;
+            let hours = Math.floor((distance % (day)) / (hour)),
+            minutes = Math.floor((distance % (hour)) / (minute)),
+            seconds = Math.floor((distance % (minute)) / second);
+            countdownText = "wait " + hours + " hours " + minutes + " min " + seconds + " sec before your next cookie";
+            countdownBalise.innerText = countdownText;
+            countdownBalise.setAttribute("data-text", countdownText);
+        }, 0)
+};
