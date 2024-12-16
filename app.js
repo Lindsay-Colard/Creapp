@@ -246,5 +246,10 @@ function countdownTimer() {
             countdownText = "Encore " + hours + "h " + minutes + "min " + seconds + "s avant le prochain biscuit";
             countdownBalise.innerText = countdownText;
             countdownBalise.setAttribute("data-text", countdownText);
+
+            // Reload la page si le countdown est écoulé
+            if (distance < 0) {
+                location.reload()
+              }
         }, 0)
 };
