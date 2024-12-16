@@ -249,7 +249,7 @@ function countdownTimer() {
 
             // Reload la page si le countdown est écoulé
             if (distance < 0) {
-                location.reload()
-            }
+                location.reload();
+            };
         }, 0)
 };
