@@ -93,7 +93,7 @@ function cookieClicked(){
         newMessage = messageTab[getRandomIntInclusive(0, messageTab.length - 1)]
     } while (newMessage == previousMessage);
 
-    newMessage = "Tu as été béni par le Farfaiden, la richesse t'attend au bout du couloir !! ";
+    newMessage = "Tu as été béni par le Farfaiden, la richesse t'attend au bout du couloir !!";
     
     messageDisplay = newMessage;
     localStorage.setItem("messageSaved", messageDisplay);
@@ -174,14 +174,10 @@ function animOpenedLoop(){
 }
 
 function easterEgg(){
-    console.log(easterEggs)
     for (let i = 0; i < easterEggs.length-1; i++) {
         let easterEgg = easterEggs[i];
-        console.log(easterEgg);
 
         if(easterEgg == newMessage){
-            console.log("oui")
-
             let eastereggContainer = document.querySelector(".easteregg");
             eastereggContainer.classList.add("easteregg--anim");
 
