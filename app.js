@@ -17,10 +17,10 @@ let indicationBalise = document.querySelector(".indication");
 let indicationMessage;
 
 let indicationChange = [
-    "Prêt pour une surprise? Tape le cookie!",
+    "Prêt pour une surprise? Tape le biscuit!",
     "Suspense... Qu’est-ce qui se cache là-dedans?",
     "Oh wow!",
-    "Oups, le cookie est déjà ouvert!"
+    "Oups, le biscuit est déjà ouvert!"
 ];
 
 
@@ -207,7 +207,7 @@ function countdownTimer() {
             let hours = Math.floor((distance % (day)) / (hour)),
             minutes = Math.floor((distance % (hour)) / (minute)),
             seconds = Math.floor((distance % (minute)) / second);
-            countdownText = "Encore " + hours + "h " + minutes + "min " + seconds + "s avant le prochain cookie";
+            countdownText = "Encore " + hours + "h " + minutes + "min " + seconds + "s avant le prochain biscuit";
             countdownBalise.innerText = countdownText;
             countdownBalise.setAttribute("data-text", countdownText);
         }, 0)
