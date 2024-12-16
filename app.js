@@ -64,6 +64,9 @@ if (today == previousCookieOpened) {
         countDown.classList.add("anim__text")
     }, 500);
 
+    newMessage = previousMessage;
+    easterEgg();
+
     // Loop animation
     piecesContainer.addEventListener("animationend", animOpenedLoop)
 } else{
@@ -92,8 +95,6 @@ function cookieClicked(){
     do {
         newMessage = messageTab[getRandomIntInclusive(0, messageTab.length - 1)]
     } while (newMessage == previousMessage);
-
-    newMessage = "Tu as été béni par le Farfaiden, la richesse t'attend au bout du couloir !!";
     
     messageDisplay = newMessage;
     localStorage.setItem("messageSaved", messageDisplay);
@@ -148,7 +149,9 @@ function animEX(){
 
     // Loop infini après que ça soit explosé
     piecesContainer.addEventListener("animationend", animOpenedLoop)
-    piecesContainer.addEventListener("animationend", easterEgg)
+
+    // Lance l'event du EasterEgg, affichant l'image s'il y a :)
+    piecesContainer.addEventListener("animationstart", easterEgg)
 }
 
 function animPaper(){
@@ -174,16 +177,26 @@ function animOpenedLoop(){
 }
 
 function easterEgg(){
-    for (let i = 0; i < easterEggs.length-1; i++) {
-        let easterEgg = easterEggs[i];
-
+    easterEggs.forEach(easterEgg => {
         if(easterEgg == newMessage){
             let eastereggContainer = document.querySelector(".easteregg");
             eastereggContainer.classList.add("easteregg--anim");
 
-            // Créer l'image, ajouter la classe easteregg__el, l'append à eastereggContainer 
+            let easterImg = document.createElement("img");
+            easterImg.classList.add("easteregg__el");
+
+            // 0 = Farfaiden, 1 = Galette
+            if(newMessage == easterEggs[0]){
+                easterImg.src = "assets/easterEggs/farfaiden.png";
+                easterImg.srcset = "assets/easterEggs/farfaiden@2x.png 2x";
+            } else if(newMessage == easterEggs[1]){
+                easterImg.src = "assets/easterEggs/galette.png";
+                easterImg.srcset = "assets/easterEggs/galette@2x.png 2x";
+            }
+
+            eastereggContainer.appendChild(easterImg);
         }
-    }
+    });
 }
 
 function lockBtn(){

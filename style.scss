@@ -469,11 +469,9 @@ h1::after, h2::after, p::after, span::after{
     
 
     &__el{
-        min-width: 200px;
-        min-height: 200px;
-        background-color: aqua;
+        max-height: 200px;
 
-        animation: easterSpin 1s ease-out forwards;
+        animation: easterSpin 1s cubic-bezier(0.33, 1, 0.68, 1)forwards;
     }
 
     &--anim{
