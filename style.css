@@ -307,6 +307,7 @@ h1::after, h2::after, p::after, span::after {
 }
 .prediction__msg {
   opacity: 0;
+  width: 100%;
   padding: 32px 16px;
   word-wrap: break-word;
   font-family: "Fraunces", serif;
