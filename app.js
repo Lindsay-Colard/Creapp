@@ -2,33 +2,65 @@
 
 let today = new Date().toLocaleDateString();
 let previousCookieOpened = localStorage.getItem("cookieDate");
-let previosMessage = localStorage.getItem("messageSaved");
+let previousMessage = localStorage.getItem("messageSaved");
 
 let cookieClicker = document.querySelector(".btn");
 cookieClicker.addEventListener("click", cookieClicked);
 
 let countdownBalise = document.querySelector(".countdown-timer");
-let countdownText = "wait ... hours ... min ... sec before your next cookie";
+let countdownText;
 
 let messageTab;
 let messageDisplay;
 let messageBalise = document.querySelector(".message");
 let indicationBalise = document.querySelector(".indication");
-let indicationMessage = "Cliquez sur le biscuit";
+let indicationMessage;
 
 let indicationChange = [
-    "Ooooh...",
-    "Tu y es presque !",
-    "Ton cookie est ouvert"
+    "Prêt pour une surprise? Tape le cookie!",
+    "Suspense... Qu’est-ce qui se cache là-dedans?",
+    "Oh wow!",
+    "Oups, le cookie est déjà ouvert!"
 ];
+
+
+// Variables CSS
+let cookieFull = document.querySelector(".cookie--full");
+let cookieBroken = document.querySelector(".cookie--broken");
+let piecesContainer = document.querySelector(".cookie__container");
+let paper = document.querySelector(".prediction");
+let comeBack = document.querySelector(".text--small");
+let countDown = document.querySelector(".text--ultrasmall");
+
 
 if (today == previousCookieOpened) {
     localStorage.setItem("cookieDate", today);
-    messageDisplay = previosMessage;
+    messageDisplay = previousMessage;
     writeMessage();
-    // lockBtn();
-    writeIndication(2);
+    writeIndication(3);
     countdownTimer();
+    lockBtn();
+
+    // CSS Finale & Anim apparition
+    cookieFull.style.display = "none";
+    cookieBroken.classList.add("anim__broken--1");
+    piecesContainer.classList.add("anim__pieces");
+    paper.classList.add("anim__paper--1");
+    paper.addEventListener("animationend", (e) =>{
+        paper.classList.add("anim__paper--2");
+        paper.classList.add("anim__paper--3");
+    })
+    setTimeout(() => {
+        comeBack.classList.add("anim__text")
+    }, 300);
+    setTimeout(() => {
+        countDown.classList.add("anim__text")
+    }, 500);
+
+    // Loop animation
+    piecesContainer.addEventListener("animationend", animOpenedLoop)
+} else{
+    writeIndication(0);
 }
 
 function getRandomIntInclusive(min, max) {
@@ -53,21 +85,17 @@ function cookieClicked(){
     let newMessage;
     do {
         newMessage = messageTab[getRandomIntInclusive(0, messageTab.length - 1)]
-    } while (newMessage == previosMessage);
+    } while (newMessage == previousMessage);
     messageDisplay = newMessage;
     localStorage.setItem("messageSaved", messageDisplay);
     writeMessage();
-    // lockBtn();
-    writeIndication(2);
+    lockBtn();
+    writeIndication(1);
     countdownTimer();
 
     // ANIMATION TRIGGERS
     animTouch();
     animBeforeEX1();
-
-    document.querySelector(".cookie--full").addEventListener("animationend", animBeforeEX2);
-
-    
 };
 
 // ANIMATIONS
@@ -79,43 +107,60 @@ function animTouch(){
 }
 
 function animBeforeEX1(){
-    let cookie = document.querySelector(".cookie--full");
-    cookie.classList.add("anim__full--1");
+    cookieFull.classList.add("anim__full--1");
+
+    cookieFull.addEventListener("animationend", animBeforeEX2);
 }
 
 function animBeforeEX2(){
-    let cookie = document.querySelector(".cookie--full");
-    cookie.classList.add("anim__full--2");
+    cookieFull.classList.add("anim__full--2");
 
     // Timer à 700 car animation delay d'anim__full--2 à 0.5s et je rajoute 0.2s
     setTimeout(() => {
         document.querySelector(".cookie__fissure").classList.add("cookie__fissure--show");
     }, 700);
 
-    cookie.addEventListener("animationend", animBeforeEX3)
+    cookieFull.addEventListener("animationend", animBeforeEX3)
 }
 
 function animBeforeEX3(){
-    let cookie = document.querySelector(".cookie--full");
-    cookie.classList.add("anim__full--3");
+    cookieFull.classList.add("anim__full--3");
     
-    cookie.addEventListener("animationend", animEX1)
+    cookieFull.addEventListener("animationend", animEX)
 }
 
-function animEX1(){
-    let cookie = document.querySelector(".cookie--broken");
-    cookie.classList.add("anim__broken--1");
+function animEX(){
+    cookieBroken.classList.add("anim__broken--1");
+    piecesContainer.classList.add("anim__pieces");
 
-    let paper = document.querySelector(".prediction");
     paper.classList.add("anim__paper--1");
 
     paper.addEventListener("animationend", animPaper)
+
+    // Loop infini après que ça soit explosé
+    piecesContainer.addEventListener("animationend", animOpenedLoop)
 }
 
 function animPaper(){
-    let paper = document.querySelector(".prediction");
     paper.classList.add("anim__paper--2");
     paper.classList.add("anim__paper--3");
+
+    // Apparition du countdown & message de revenir le lendemain
+    writeIndication(2);
+
+    setTimeout(() => {
+        comeBack.classList.add("anim__text")
+    }, 300);
+
+    setTimeout(() => {
+        countDown.classList.add("anim__text")
+    }, 500);
+}
+
+function animOpenedLoop(){
+    let piecesContainer = document.querySelector('.cookie__container')
+    cookieBroken.classList.add("anim__opened");
+    piecesContainer.classList.add("anim__opened");
 }
 
 function lockBtn(){
@@ -130,6 +175,11 @@ function writeIndication(state){
     indicationMessage = indicationChange[state];
     indicationBalise.innerText = indicationMessage;
     indicationBalise.setAttribute("data-text", indicationMessage);
+
+    indicationBalise.classList.add("anim__text");
+    indicationBalise.addEventListener("animationend", (e) =>{
+        indicationBalise.classList.remove("anim__text")
+    })
 }
 
 
@@ -157,7 +207,7 @@ function countdownTimer() {
             let hours = Math.floor((distance % (day)) / (hour)),
             minutes = Math.floor((distance % (hour)) / (minute)),
             seconds = Math.floor((distance % (minute)) / second);
-            countdownText = "wait " + hours + " hours " + minutes + " min " + seconds + " sec before your next cookie";
+            countdownText = "Encore " + hours + "h " + minutes + "min " + seconds + "s avant le prochain cookie";
             countdownBalise.innerText = countdownText;
             countdownBalise.setAttribute("data-text", countdownText);
         }, 0)

@@ -15,10 +15,11 @@
     <div class="background"></div>
     <main>
         <h1 class="projectName">Fortu-Nom-Nom</h1>
-        <p class="indication text--big" data-text="Tap the fortune cookie for today's quote!">Tap the fortune cookie for today's quote!</p>
-        <p class="text--small"></p>
+        <div class="container">
+            <h2 class="indication text--big" data-text=""></h2>
+            <p class="text--small" data-text="Reviens demain!">Reviens demain!</p>
+        </div>
 
-        <!-- COOKIE -->
         <button class="btn">
 
             <div class="touch">
@@ -36,10 +37,6 @@
                 </g>
             </svg>
 
-            <!-- <svg class="svg paper" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 178.91 49.52">
-                <path d="M177.88 36.04c-1.9.87-4.68 2.09-8.06 3.41-13.18 5.16-31.24 10.2-83.53 9.5-45.48-.61-63.4-4.85-77.3-9.5-3.55-1.19-6.47-2.28-8.49-3.06C.59 24.52.68 12.64.76.77c1.72.78 4.29 1.91 7.43 3.14 13.96 5.48 30.64 9.67 77.53 9.41 50.82-.28 70.96-5.41 83.53-9.41 3.84-1.22 7-2.35 9.15-3.14-.17 11.76-.35 23.51-.52 35.27Z"/>
-            </svg> -->
-
             <svg class="svg cookie cookie--broken" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245.6 136.5">
                 <g class="cookie__group--broken cookie__group--right">
                   <path class="cookie__svg" d="M138.19 81.83c10.51-6.09 39.13-43.4 53.34-59.7C204.11 7.71 209.26-.35 212.43.57c46.27 13.53 49.9 116.88-31.93 133.86-8.04 1.67-15.85 1.75-19.2.84-1.07-.29-1.83-2.35-1.83-2.35l-16.7-27.31 25.89-6.99-30.47-16.79Z"/>
@@ -49,19 +46,26 @@
                 <g class="cookie__group--broken cookie__group--left">
                     <path class="cookie__svg" d="M96.82 66.73S80.93 51.36 42.8 34.99c-20.41-8.76-22.54-8.43-29.95-5.39s-17.51 36.44-9.3 59.06c15.28 42.08 87.93 50.12 90.59 46.61.56-.73-11.24-21.06-11.24-21.06L98.22 98.9 68.86 81.04S92.59 69.83 96.8 66.73Z"/>
                 </g>
-              </svg>
+            </svg>
+
+            <svg class="svg cookie cookie__container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117.44 158.64">
+                  <path d="M28.24 1.83 4.54 13.34l25.62 11.12C25.62 16.67 26 9.19 28.24 1.83Z"/>
+                  <path d="M77.1.75c-2.21 1.05-1.13 8.5-1.13 8.5s9.45 1.29 10.2-1.13C87.08 5.21 80.35-.8 77.1.75Z"/>
+                  <path d="M.52 136.87c-.28 1.6 2.92 3.8 2.92 3.8s2.06-1.27 4.6-3.59c3.63-3.31 5.89-3.85 5.7-4.38-.43-1.2-12.54.28-13.22 4.16Z"/>
+                  <path d="m14.42 150.52 9.55 7.17 1.94-25.2-11.49 18.03z"/>
+                  <path d="m77.96 132.49 15.95 22.46c9.56-3.22 18.66-6.81 22.67-14.43-12.05 1.25-24.98-1.76-38.61-8.03Z"/>
+            </svg>
         </button>
 
         <div class="prediction">
             <div class="prediction__container">
-                <p class="message prediction__msg">Ceci est un très très très très très très très long message</p>
+                <p class="message prediction__msg"></p>
 
-            <img aria-hidden="true" class="prediction__img" src="/Creapp/assets/Paper.png" alt="">
+                <img aria-hidden="true" class="prediction__img" src="assets/paper.png" alt="">
             </div>
         </div>
         
-
-        <p class="text--ultrasmall countdown-timer" data-text="countdown">countdown</p>
+        <p class="text--ultrasmall"><span class="countdown-timer" data-text=""></span><span class="dot__container"><span class="dot dot--1" data-text=".">.</span><span class="dot dot--2" data-text=".">.</span><span class="dot dot--3" data-text=".">.</span></span> </p>
     </main>
 </body>
 </html>

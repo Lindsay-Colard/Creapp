@@ -65,13 +65,14 @@ main{
     pointer-events: none;
 }
 
-h1, p{
+h1, h2, p, span{
     z-index: 1;
     position: relative;
 
     text-align: center;
+    width: fit-content;
 }
-h1::after, p::after{
+h1::after, h2::after, p::after, span::after{
     content: attr(data-text);
     z-index: -1;
 
@@ -90,6 +91,13 @@ h1::after, p::after{
     0px 2px var(--color-white);
 }
 
+.container{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 4px;
+}
+
 // TEXTS
 .text{
     &--big{
@@ -97,9 +105,13 @@ h1::after, p::after{
     }
     &--small{
         font-size: 14px;
+        display: none;
+        opacity: 0;
     }
     &--ultrasmall{
         font-size: 10px;
+        display: none;
+        opacity: 0;
     }
 }
 
@@ -141,6 +153,26 @@ h1::after, p::after{
 
         width: 100%;
         height: 100%;
+    }
+}
+
+// DOTS
+.dot{
+    position: absolute;
+    animation: animDot 1.5s infinite alternate;
+    animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+    
+    &__container{
+        position: relative;
+    }
+
+    &--2{
+        left: 4px;
+        animation-delay: 0.3s;
+    }
+    &--3{
+        left: 8px;
+        animation-delay: 0.6s;
     }
 }
 
@@ -241,6 +273,7 @@ h1::after, p::after{
 // COOKIE
 .svg{
     overflow: visible;
+    pointer-events: none;
 
     position: absolute;
     top: 50%;
@@ -279,9 +312,12 @@ h1::after, p::after{
         }
     }
 
-    
-
     &__svg{
+        fill: var(--color-yellow);
+    }
+
+    &__container{
+        display: none;
         fill: var(--color-yellow);
     }
 
@@ -389,6 +425,31 @@ h1::after, p::after{
             & .prediction__msg{
                 animation: animText 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
             }
+        }
+    }
+
+    // Apparition des textes countdown et Come Back!
+    &__text{
+        display: block;
+        animation: popText 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    &__pieces{
+        display: block;
+        transform-origin: center;
+        animation: animPieces cubic-bezier(.08,1.34,.4,.95) 0.8s forwards;
+    }
+
+    // Animation loop quand déjà ouvert / fini d'être ouvert
+    &__opened{
+        & .cookie__group--broken{
+            animation: 3s ease-in-out infinite alternate;
+        }
+        & .cookie__group--right{
+            animation-name: animOpenedRight;
+        }
+        & .cookie__group--left{
+            animation-name: animOpenedLeft;
         }
     }
 }
