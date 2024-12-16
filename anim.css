@@ -194,4 +194,20 @@
   to {
     transform: translate(-32px, -24px) rotate(-9deg);
   }
+}
+@keyframes easterZoom {
+  from {
+    transform: translate(-50%, calc(-50% + 175px)) scale(0);
+  }
+  to {
+    transform: translate(-50%, calc(-50% + 175px)) scale(1);
+  }
+}
+@keyframes easterSpin {
+  from {
+    transform: rotate(1080deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }/*# sourceMappingURL=anim.css.map */

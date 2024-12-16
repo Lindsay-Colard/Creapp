@@ -10,6 +10,8 @@ cookieClicker.addEventListener("click", cookieClicked);
 let countdownBalise = document.querySelector(".countdown-timer");
 let countdownText;
 
+let newMessage;
+
 let messageTab;
 let messageDisplay;
 let messageBalise = document.querySelector(".message");
@@ -22,6 +24,11 @@ let indicationChange = [
     "Oh wow!",
     "Oups, le biscuit est déjà ouvert!"
 ];
+
+let easterEggs = [
+    "Tu as été béni par le Farfaiden, la richesse t'attend au bout du couloir !!",
+    "Prépare-toi à régner : la fève dans la galette des rois t’attend !"
+]
 
 
 // Variables CSS
@@ -82,10 +89,12 @@ fetch("assets/json/messages.json")
 
 function cookieClicked(){
     localStorage.setItem("cookieDate", today);
-    let newMessage;
     do {
         newMessage = messageTab[getRandomIntInclusive(0, messageTab.length - 1)]
     } while (newMessage == previousMessage);
+
+    newMessage = "Tu as été béni par le Farfaiden, la richesse t'attend au bout du couloir !! ";
+    
     messageDisplay = newMessage;
     localStorage.setItem("messageSaved", messageDisplay);
     writeMessage();
@@ -139,6 +148,7 @@ function animEX(){
 
     // Loop infini après que ça soit explosé
     piecesContainer.addEventListener("animationend", animOpenedLoop)
+    piecesContainer.addEventListener("animationend", easterEgg)
 }
 
 function animPaper(){
@@ -161,6 +171,23 @@ function animOpenedLoop(){
     let piecesContainer = document.querySelector('.cookie__container')
     cookieBroken.classList.add("anim__opened");
     piecesContainer.classList.add("anim__opened");
+}
+
+function easterEgg(){
+    console.log(easterEggs)
+    for (let i = 0; i < easterEggs.length-1; i++) {
+        let easterEgg = easterEggs[i];
+        console.log(easterEgg);
+
+        if(easterEgg == newMessage){
+            console.log("oui")
+
+            let eastereggContainer = document.querySelector(".easteregg");
+            eastereggContainer.classList.add("easteregg--anim");
+
+            // Créer l'image, ajouter la classe easteregg__el, l'append à eastereggContainer 
+        }
+    }
 }
 
 function lockBtn(){

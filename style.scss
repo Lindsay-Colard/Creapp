@@ -457,3 +457,28 @@ h1::after, h2::after, p::after, span::after{
         }
     }
 }
+
+.easteregg{
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%, calc(-50% + 175px));
+    
+
+    &__el{
+        min-width: 200px;
+        min-height: 200px;
+        background-color: aqua;
+
+        animation: easterSpin 1s ease-out forwards;
+    }
+
+    &--anim{
+        display: block;
+        animation: easterZoom 1s cubic-bezier(.43,2.06,.64,1) forwards;
+    }
+}
+
